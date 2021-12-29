@@ -1,10 +1,16 @@
 package com.qhy.goods.web;
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.qhy.goods.common.IBaseController;
+import com.qhy.goods.dto.GoodsCategoryAddDto;
+import com.qhy.goods.service.IGoodsCategoryService;
+import com.qhy.goods.vo.GoodsCategoryVo;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.RestController;
-import com.qhy.goods.web.BaseController;
+import java.util.List;
 
 /**
  * <p>
@@ -16,6 +22,20 @@ import com.qhy.goods.web.BaseController;
  */
 @RestController
 @RequestMapping("/goods/goods-category")
-public class GoodsCategoryController extends BaseController {
+@Tag(name = "商品分类管理接口")
+public class GoodsCategoryController extends IBaseController<IGoodsCategoryService> {
+
+    @Operation(summary = "创建分类")
+    @PutMapping("/create")
+    public Long createCategory(@Validated @RequestBody GoodsCategoryAddDto formData) {
+        return baseService.create(formData);
+    }
+
+    @Operation(summary = "分类列表")
+    @GetMapping("/list")
+    public List<GoodsCategoryVo> listCategory() {
+        return baseService.listCategory();
+    }
+
 
 }

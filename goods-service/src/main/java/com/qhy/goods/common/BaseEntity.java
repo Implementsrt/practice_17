@@ -1,4 +1,4 @@
-package com.qhy.goods.entity;
+package com.qhy.goods.common;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;

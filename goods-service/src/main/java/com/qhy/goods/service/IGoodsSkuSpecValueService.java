@@ -1,7 +1,7 @@
 package com.qhy.goods.service;
 
 import com.qhy.goods.entity.GoodsSkuSpecValue;
-import com.qhy.goods.service.IBaseService;
+import com.qhy.goods.common.IBaseService;
 
 /**
  * <p>

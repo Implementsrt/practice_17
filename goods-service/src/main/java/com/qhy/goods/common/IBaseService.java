@@ -1,4 +1,4 @@
-package com.qhy.goods.service;
+package com.qhy.goods.common;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 

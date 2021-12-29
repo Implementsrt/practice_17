@@ -3,6 +3,7 @@ package com.qhy.goods.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.qhy.goods.common.BaseEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
@@ -43,9 +44,14 @@ public class GoodsSpu extends BaseEntity {
     @Schema(description = "品牌ID")
     private Long brandId;
 
-    
-
-    
+    /**
+     * 生成商品编码
+     */
+    public GoodsSpu generateSpuNo() {
+        // 分类ID、品牌ID各占3位 + 时间戳
+        this.spuNo = String.format("%03d%03d%s", brandId, categoryId, System.currentTimeMillis());
+        return this;
+    }
 
 
 }

@@ -47,6 +47,10 @@ public class R<T> {
         return ok(HttpStatus.HTTP_OK, "操作成功", data);
     }
 
+    public static R<?> ok() {
+        return ok(HttpStatus.HTTP_OK, "操作成功", null);
+    }
+
     public static R<?> error(int code, String msg) {
         return error(code, msg, null);
     }
@@ -55,8 +59,11 @@ public class R<T> {
         return error(HttpStatus.HTTP_INTERNAL_ERROR, msg, null);
     }
 
-
     public static R<?> error(Object data) {
         return error(HttpStatus.HTTP_INTERNAL_ERROR, "操作失败", data);
+    }
+
+    public static R<?> error() {
+        return error(HttpStatus.HTTP_INTERNAL_ERROR, "操作失败", null);
     }
 }

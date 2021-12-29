@@ -38,9 +38,11 @@ public class MpCodeGenUtil {
                 .strategyConfig(builder -> {
                     builder.addInclude("goods_info") // 设置需要生成的表名
 
+                            // fixme 处理继承时的泛型，以及注解的处理
+
                             .entityBuilder()
                             .disableSerialVersionUID()
-                            .superClass("com.qhy.goods.entity.BaseEntity")
+                            .superClass("com.qhy.goods.common.BaseEntity")
                             .enableLombok()
                             .enableChainModel()
                             .enableRemoveIsPrefix()
@@ -52,10 +54,12 @@ public class MpCodeGenUtil {
 
                             .controllerBuilder()
                             .enableRestStyle()
-                            .superClass("com.qhy.goods.web.BaseController")
+                            .superClass("com.qhy.goods.common.BaseController")
 
                             .serviceBuilder()
-                            .superServiceClass("com.qhy.goods.service.IBaseService")
+                            .superServiceClass("com.qhy.goods.common.IBaseService")
+                            .superServiceImplClass("com.qhy.goods.common.AbstractCommonServiceImpl")
+
 
                     // .addTablePrefix("t_", "c_"); // 设置过滤表前缀
                     ;

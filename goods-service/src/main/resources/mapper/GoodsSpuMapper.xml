@@ -2,4 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qhy.goods.mapper.GoodsSpuMapper">
 
+
+    <select id="getDetail" resultType="com.qhy.goods.vo.GoodsSpuVo">
+        select gs.id,
+               gs.spu_no,
+               gs.goods_name,
+               gs.low_price,
+               gs.category_id,
+               gs.brand_id,
+               gb.brand_name,
+               gc.category_name
+        from goods_spu gs
+                 inner join goods_brand gb on gb.id = gs.brand_id
+                 inner join goods_category gc on gc.id = gs.category_id
+
+        where gs.id = #{id}
+        limit 1
+    </select>
 </mapper>
