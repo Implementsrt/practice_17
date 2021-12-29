@@ -10,7 +10,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 分类表
+ * 店铺表
  * </p>
  *
  * @author qhy
@@ -19,15 +19,15 @@ import lombok.experimental.Accessors;
 @Getter
 @Setter
 @Accessors(chain = true)
-@TableName("goods_category")
-@Schema(name = "GoodsCategory对象", description = "分类表")
-public class GoodsCategory extends BaseEntity {
+@TableName("goods_info")
+@Schema(name = "GoodsInfo对象", description = "店铺表")
+public class GoodsInfo extends BaseEntity {
 
     @TableId(value = "ID", type = IdType.AUTO)
     private Long id;
 
-    @Schema(description = "分类名称")
-    private String categoryName;
+    @Schema(description = "店铺名称")
+    private String shopName;
 
     
 

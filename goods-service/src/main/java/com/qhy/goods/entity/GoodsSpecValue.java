@@ -3,10 +3,7 @@ package com.qhy.goods.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.qhy.goods.entity.BaseEntity;
-import java.time.LocalDateTime;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -23,21 +20,21 @@ import lombok.experimental.Accessors;
 @Setter
 @Accessors(chain = true)
 @TableName("goods_spec_value")
-@ApiModel(value = "GoodsSpecValue对象", description = "规格值表")
+@Schema(name = "GoodsSpecValue对象", description = "规格值表")
 public class GoodsSpecValue extends BaseEntity {
 
     @TableId(value = "ID", type = IdType.AUTO)
     private Long id;
 
-    @ApiModelProperty("规格ID")
+    @Schema(description = "规格ID")
     private Long specId;
 
-    @ApiModelProperty("规格值")
+    @Schema(description = "规格值")
     private String specValue;
 
-    private LocalDateTime gmtCreate;
+    
 
-    private LocalDateTime gmtUpdate;
+    
 
 
 }

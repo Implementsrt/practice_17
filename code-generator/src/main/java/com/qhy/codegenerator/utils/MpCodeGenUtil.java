@@ -21,7 +21,7 @@ public class MpCodeGenUtil {
     public static void generate() {
         String outputDir = System.getProperty("user.dir") + "/goods-service/src/main/java";
         String xmlOutputDir = System.getProperty("user.dir") + "/goods-service/src/main/resources/mapper";
-        FastAutoGenerator.create("jdbc:mysql://localhost:3306/pratice_17", "root", "root")
+        FastAutoGenerator.create("jdbc:mysql://localhost:3306/practice_17", "root", "root")
                 .globalConfig(builder -> {
                     builder.author("qhy") // 设置作者
                             .enableSwagger() // 开启 swagger 模式
@@ -36,7 +36,7 @@ public class MpCodeGenUtil {
                             .pathInfo(Collections.singletonMap(OutputFile.mapperXml, xmlOutputDir)); // 设置mapperXml生成路径
                 })
                 .strategyConfig(builder -> {
-                    builder.addInclude("goods_brand", "goods_category", "goods_safeguard", "goods_sku", "goods_sku_safeguard", "goods_sku_spec_value", "goods_spec", "goods_spec_value", "goods_spu", "goods_spu_spec") // 设置需要生成的表名
+                    builder.addInclude("goods_info") // 设置需要生成的表名
 
                             .entityBuilder()
                             .disableSerialVersionUID()

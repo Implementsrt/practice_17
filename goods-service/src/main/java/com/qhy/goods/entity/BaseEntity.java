@@ -1,5 +1,6 @@
 package com.qhy.goods.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,8 +15,10 @@ import java.time.LocalDateTime;
 @Setter
 public class BaseEntity implements Serializable {
 
+    @JsonIgnore
     private LocalDateTime gmtCreate;
 
+    @JsonIgnore
     private LocalDateTime gmtUpdate;
 
 }
