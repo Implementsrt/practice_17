@@ -3,8 +3,7 @@ package com.qhy.goods.dto;
 import cn.hutool.http.HttpStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import lombok.experimental.Accessors;
 
 /**
@@ -13,8 +12,7 @@ import lombok.experimental.Accessors;
  * @author qhy
  * @date 2021/12/28 17:52
  */
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @Accessors(chain = true)
 public class R<T> {

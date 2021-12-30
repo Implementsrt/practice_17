@@ -1,7 +1,7 @@
 package com.qhy.goods.web;
 
 
-import com.qhy.goods.common.IBaseController;
+import com.qhy.goods.common.BaseController;
 import com.qhy.goods.dto.GoodsCategoryAddDto;
 import com.qhy.goods.service.IGoodsCategoryService;
 import com.qhy.goods.vo.GoodsCategoryVo;
@@ -23,7 +23,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/goods/goods-category")
 @Tag(name = "商品分类管理接口")
-public class GoodsCategoryController extends IBaseController<IGoodsCategoryService> {
+public class GoodsCategoryController extends BaseController<IGoodsCategoryService> {
 
     @Operation(summary = "创建分类")
     @PutMapping("/create")

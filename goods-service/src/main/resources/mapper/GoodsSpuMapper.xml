@@ -19,4 +19,18 @@
         where gs.id = #{id}
         limit 1
     </select>
+    <select id="listGoodsSpu" resultType="com.qhy.goods.vo.GoodsSpuVo">
+        select gs.id,
+               gs.spu_no,
+               gs.goods_name,
+               gs.low_price,
+               gs.category_id,
+               gs.brand_id,
+               gb.brand_name,
+               gc.category_name
+        from goods_spu gs
+                 inner join goods_brand gb on gb.id = gs.brand_id
+                 inner join goods_category gc on gc.id = gs.category_id
+        order by id
+    </select>
 </mapper>

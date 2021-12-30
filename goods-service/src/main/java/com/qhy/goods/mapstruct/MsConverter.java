@@ -3,6 +3,7 @@ package com.qhy.goods.mapstruct;
 import com.qhy.goods.dto.GoodsBrandAddDto;
 import com.qhy.goods.dto.GoodsCategoryAddDto;
 import com.qhy.goods.dto.GoodsSpuAddDto;
+import com.qhy.goods.dto.GoodsSpuQuery;
 import com.qhy.goods.entity.GoodsBrand;
 import com.qhy.goods.entity.GoodsCategory;
 import com.qhy.goods.entity.GoodsSpu;
@@ -26,5 +27,7 @@ public interface MsConverter {
     GoodsCategory toEntity(GoodsCategoryAddDto source);
 
     GoodsCategoryVo toVo(GoodsCategory source);
+
+    GoodsSpu toEntity(GoodsSpuQuery source);
 
 }

@@ -2,16 +2,29 @@ server:
   port: 9001
   servlet:
     context-path: /api
+    encoding:
+      charset: utf-8
+  # 优雅停机
+  shutdown: graceful
+  # tomcat设置
+  tomcat:
+    uri-encoding: UTF-8
+    threads:
+      max: 500
+      min-spare: 10
+
 
 
 spring:
+  profiles:
+    active: dev
+  mvc:
+    format:
+      date: yyyy-MM-dd
+      date-time: yyyy-MM-dd HH:mm:ss
+      time: HH:mm:ss
   # Druid连接池配置
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/practice_17
-    username: root
-    password: root
-
     druid:
       # 初始连接数
       initialSize: 5
@@ -80,6 +93,15 @@ spring:
         #        deny:
 
 
-logging:
-  level:
-    com.qhy: debug
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    jdbc-type-for-null: 'null'
+    use-generated-keys: true
+    default-statement-timeout: 3000
+    cache-enabled: true
+  global-config:
+    banner: false
+    db-config:
+      insert-strategy: not_null
+      where-strategy: not_empty

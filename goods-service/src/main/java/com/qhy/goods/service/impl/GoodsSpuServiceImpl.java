@@ -1,7 +1,9 @@
 package com.qhy.goods.service.impl;
 
+import com.github.pagehelper.PageInfo;
 import com.qhy.goods.common.AbstractCommonServiceImpl;
 import com.qhy.goods.dto.GoodsSpuAddDto;
+import com.qhy.goods.dto.GoodsSpuQuery;
 import com.qhy.goods.entity.GoodsSpu;
 import com.qhy.goods.mapper.GoodsSpuMapper;
 import com.qhy.goods.service.IGoodsSpuService;
@@ -33,6 +35,14 @@ public class GoodsSpuServiceImpl extends AbstractCommonServiceImpl<GoodsSpuMappe
     @Override
     public GoodsSpuVo getDetail(Long id) {
         return baseMapper.getDetail(id);
+    }
+
+    @Override
+    public PageInfo<GoodsSpuVo> listByPage(GoodsSpuQuery query) {
+
+        query.paging();
+
+        return PageInfo.of(baseMapper.listGoodsSpu(query));
     }
 
 

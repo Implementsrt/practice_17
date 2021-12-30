@@ -1,7 +1,9 @@
 package com.qhy.goods.service;
 
+import com.github.pagehelper.PageInfo;
 import com.qhy.goods.common.IBaseService;
 import com.qhy.goods.dto.GoodsSpuAddDto;
+import com.qhy.goods.dto.GoodsSpuQuery;
 import com.qhy.goods.entity.GoodsSpu;
 import com.qhy.goods.vo.GoodsSpuVo;
 
@@ -30,5 +32,13 @@ public interface IGoodsSpuService extends IBaseService<GoodsSpu> {
      * @return 商品列表
      */
     GoodsSpuVo getDetail(Long id);
+
+    /**
+     * 商品SPU列表
+     *
+     * @param query 筛选条件
+     * @return 商品SPU列表
+     */
+    PageInfo<GoodsSpuVo> listByPage(GoodsSpuQuery query);
 
 }

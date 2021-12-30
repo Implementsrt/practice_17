@@ -13,8 +13,8 @@ import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import javax.servlet.http.HttpServletResponse;
@@ -23,13 +23,16 @@ import java.util.Optional;
 
 /**
  * 对controller访问的异常做处理
+ * <p/>
+ * <p><b>这里有个坑，如果是使用@ControllerAdvice的话，会直接返回Spring原生404错误</b></p>
+ * <pre>难道是因为我实现了ResponseBodyAdvice？</pre>
+ *
  * @author qhy
  * @date 2021/12/29 16:49
  */
-@ControllerAdvice
+@RestControllerAdvice
 @Slf4j
 public class CustomExceptionHandler {
-
 
     @ExceptionHandler(CustomException.class)
     public R<?> handleError(CustomException ex, HttpServletResponse response) {

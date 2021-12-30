@@ -1,0 +1,11 @@
+pagehelper:
+  #  auto-runtime-dialect: true
+  helper-dialect: mysql
+  # 有一个参数为0时，不分页直接查询
+  page-size-zero: true
+  # 分页合理化
+  reasonable: true
+  # 支持从mapper方法参数中获取
+  support-methods-arguments: true
+  # 两种分页方式，页码或者偏移量  这里选的是偏移量
+  offset-as-page-num: false

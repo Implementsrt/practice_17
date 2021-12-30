@@ -1,7 +1,7 @@
 package com.qhy.goods.web;
 
 
-import com.qhy.goods.common.IBaseController;
+import com.qhy.goods.common.BaseController;
 import com.qhy.goods.dto.GoodsBrandAddDto;
 import com.qhy.goods.service.IGoodsBrandService;
 import com.qhy.goods.vo.GoodsBrandVo;
@@ -23,7 +23,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/goods/goods-brand")
 @Tag(name = "商品品牌管理接口")
-public class GoodsBrandController extends IBaseController<IGoodsBrandService> {
+public class GoodsBrandController extends BaseController<IGoodsBrandService> {
 
     @Operation(summary = "创建品牌")
     @PutMapping("/create")

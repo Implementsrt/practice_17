@@ -1,8 +1,10 @@
 package com.qhy.goods.web;
 
 
-import com.qhy.goods.common.IBaseController;
+import com.github.pagehelper.PageInfo;
+import com.qhy.goods.common.BaseController;
 import com.qhy.goods.dto.GoodsSpuAddDto;
+import com.qhy.goods.dto.GoodsSpuQuery;
 import com.qhy.goods.service.IGoodsSpuService;
 import com.qhy.goods.vo.GoodsSpuVo;
 import io.swagger.v3.oas.annotations.Operation;
@@ -22,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/goods/goods-spu")
 @Tag(name = "商品SPU管理接口")
-public class GoodsSpuController extends IBaseController<IGoodsSpuService> {
+public class GoodsSpuController extends BaseController<IGoodsSpuService> {
 
     @Operation(summary = "添加商品SPU")
     @PostMapping("/create")
@@ -35,4 +37,11 @@ public class GoodsSpuController extends IBaseController<IGoodsSpuService> {
     public GoodsSpuVo getDetail(@PathVariable Long id) {
         return baseService.getDetail(id);
     }
+
+    @Operation(summary = "商品列表")
+    @PostMapping("/list")
+    public PageInfo<GoodsSpuVo> listGoodsSpu(@RequestBody GoodsSpuQuery query) {
+        return baseService.listByPage(query);
+    }
+
 }
