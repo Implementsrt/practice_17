@@ -29,6 +29,7 @@
                gb.brand_name,
                gc.category_name
         from goods_spu gs
+            inner join (select id from goods_spu order by id /*limit*/) gsp on gsp.id = gs.id
                  inner join goods_brand gb on gb.id = gs.brand_id
                  inner join goods_category gc on gc.id = gs.category_id
         order by id

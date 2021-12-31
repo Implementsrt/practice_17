@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.generator.config.OutputFile;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 
 import java.util.Collections;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * mybatis plus 代码生成工具
@@ -15,7 +17,23 @@ import java.util.Collections;
 public class MpCodeGenUtil {
 
     public static void main(String[] args) {
-        generate();
+
+        String regex = "limit\\s+\\d+(,\\d+)?";
+
+        String sql = "select a,b,c from table_name /*limit*/ where 1=1 ";
+        sql += " limit 1,3";
+
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(sql);
+        if (matcher.find()) {
+            String group = matcher.group();
+            System.out.println(group);
+            String result = sql.replaceAll(regex, "")
+                    .replace("/*limit*/", group);
+            System.out.println(result);
+        }
+
+        // generate();
     }
 
     public static void generate() {

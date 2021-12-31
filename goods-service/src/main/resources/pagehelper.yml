@@ -1,6 +1,7 @@
 pagehelper:
   #  auto-runtime-dialect: true
-  helper-dialect: mysql
+  # 自定义的分页加强处理
+  helper-dialect: com.qhy.goods.config.MybatisPlugins
   # 有一个参数为0时，不分页直接查询
   page-size-zero: true
   # 分页合理化

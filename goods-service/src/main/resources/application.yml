@@ -72,7 +72,7 @@ spring:
           merge-sql: true
         wall:
           enabled: true
-          db-type: oracle
+          db-type: mysql
           config:
             drop-table-allow: false
             truncate-allow: false
