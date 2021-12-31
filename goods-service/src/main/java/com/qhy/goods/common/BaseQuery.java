@@ -1,7 +1,5 @@
 package com.qhy.goods.common;
 
-import cn.hutool.core.util.ObjectUtil;
-import com.github.pagehelper.PageHelper;
 import io.swagger.v3.oas.annotations.Hidden;
 import lombok.Data;
 
@@ -12,18 +10,14 @@ import lombok.Data;
 @Data
 public class BaseQuery {
 
-    @Hidden
-    private Integer page;
-    @Hidden
-    private Integer limit;
+    /*
+     * page helper已经做了自动处理，只要mapper的参数中包含这个两个名称的属性不为空时，自动开始分页
+     * 或者使用params配置项配置为对应的属性名称即可
+     */
 
-    public void paging() {
-        // fixme 想一下办法，怎么能够全局自动的判断，而不需要显式的调用
-        // 然后第二个问题就是怎么优化countSql  参考pagination，在count的时候把left join 的表去掉
-        // 第三个就是允许自定义limit的  （Mysql
-        if (!ObjectUtil.hasNull(page, limit)) {
-            PageHelper.startPage(page, limit);
-        }
-    }
+    @Hidden
+    private Integer pageNum;
+    @Hidden
+    private Integer pageSize;
 
 }

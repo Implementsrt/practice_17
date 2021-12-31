@@ -40,8 +40,6 @@ public class GoodsSpuServiceImpl extends AbstractCommonServiceImpl<GoodsSpuMappe
     @Override
     public PageInfo<GoodsSpuVo> listByPage(GoodsSpuQuery query) {
 
-        query.paging();
-
         return PageInfo.of(baseMapper.listGoodsSpu(query));
     }
 
