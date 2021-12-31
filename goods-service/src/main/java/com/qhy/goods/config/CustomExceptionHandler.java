@@ -142,8 +142,20 @@ public class CustomExceptionHandler {
     /**
      * 未处理异常
      */
+    @ExceptionHandler(Exception.class)
+    public R<?> handleError(Exception ex, HttpServletResponse response) {
+        return this.handlerNoDisposeError(ex, response);
+    }
+
+    /**
+     * 未处理异常
+     */
     @ExceptionHandler(Throwable.class)
     public R<?> handleError(Throwable ex, HttpServletResponse response) {
+        return this.handlerNoDisposeError(ex, response);
+    }
+
+    private R<?> handlerNoDisposeError(Throwable ex, HttpServletResponse response) {
         log.error("未处理异常:{}", ex);
         response.setStatus(HttpStatus.HTTP_INTERNAL_ERROR);
         String message = ex.getMessage();
