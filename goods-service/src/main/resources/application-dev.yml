@@ -14,4 +14,4 @@ springdoc:
 
 logging:
   level:
-    com.qhy: debug
+    cn.qhy: debug

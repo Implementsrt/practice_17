@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.qhy.goods.mapper.GoodsSpuMapper">
+<mapper namespace="cn.qhy.goods.mapper.GoodsSpuMapper">
 
 
-    <select id="getDetail" resultType="com.qhy.goods.vo.GoodsSpuVo">
+    <select id="getDetail" resultType="cn.qhy.goods.vo.GoodsSpuVo">
         select gs.id,
                gs.spu_no,
                gs.goods_name,
@@ -19,7 +19,7 @@
         where gs.id = #{id}
         limit 1
     </select>
-    <select id="listGoodsSpu" resultType="com.qhy.goods.vo.GoodsSpuVo">
+    <select id="listGoodsSpu" resultType="cn.qhy.goods.vo.GoodsSpuVo">
         select gs.id,
                gs.spu_no,
                gs.goods_name,
