@@ -17,4 +17,9 @@ eureka:
       # defaultZone属性区分大小写，并且需要使用驼峰式大小写，因为serviceUrl属性是Map<String, String>。因此，defaultZone属性不遵循default-zone的常规Spring Boot蛇形惯例
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
     healthcheck:
+      # 是否开启健康检查
       enabled: true
+    # 是否暴露注册信息
+    fetch-registry: true
+    # 是否作为服务注册
+    register-with-eureka: false
