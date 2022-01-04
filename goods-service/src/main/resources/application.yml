@@ -14,8 +14,9 @@ server:
       min-spare: 10
 
 
-
 spring:
+  application:
+    name: goods-service
   profiles:
     active: dev
   mvc:
@@ -105,3 +106,7 @@ mybatis-plus:
     db-config:
       insert-strategy: not_null
       where-strategy: not_empty
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8001/eureka/

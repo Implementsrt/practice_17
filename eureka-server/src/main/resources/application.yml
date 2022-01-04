@@ -1,0 +1,20 @@
+spring:
+  application:
+    # 首先服务一定要有名称
+    name: eureka-server
+
+server:
+  # 然后是端口
+  port: 8001
+
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      # defaultZone是一个魔术字符串后备值，它为任何不表达首选项的客户端提供服务URL（换句话说，这是一个有用的默认值）。
+      # defaultZone属性区分大小写，并且需要使用驼峰式大小写，因为serviceUrl属性是Map<String, String>。因此，defaultZone属性不遵循default-zone的常规Spring Boot蛇形惯例
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    healthcheck:
+      enabled: true
