@@ -31,7 +31,7 @@ public class ResponseControllerAdvice implements ResponseBodyAdvice<Object> {
     @Resource
     private ObjectMapper objectMapper;
 
-    @Value("${server.servlet.context-path}")
+    @Value("${server.servlet.context-path:''}")
     private String contextPath;
 
     @Override

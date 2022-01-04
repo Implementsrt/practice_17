@@ -21,7 +21,7 @@ import java.util.List;
  * @since 2021-12-28
  */
 @RestController
-@RequestMapping("/goods/goods-brand")
+@RequestMapping("/goods-brand")
 @Tag(name = "商品品牌管理接口")
 public class GoodsBrandController extends BaseController<IGoodsBrandService> {
 

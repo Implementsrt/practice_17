@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.*;
  * @since 2021-12-28
  */
 @RestController
-@RequestMapping("/goods/goods-spu")
+@RequestMapping("/goods-spu")
 @Tag(name = "商品SPU管理接口")
 public class GoodsSpuController extends BaseController<IGoodsSpuService> {
 

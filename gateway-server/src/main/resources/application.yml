@@ -1,0 +1,62 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: gateway-server
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+    password:
+  cloud:
+    gateway:
+      # 全局跨域配置  not working yet
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedHeaders: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - PATCH
+              - DELETE
+              - OPTION
+      discovery:
+        locator:
+          #是否与服务注册于发现组件进行结合，通过 serviceId 转发到具体的服务实例。
+          #默认为 false，设为 true 便开启通过服务中心的自动根据 serviceId 创建路由的功能
+          enabled: true
+          ##表示将请求路径的服务名配置改成小写  因为服务注册的时候，向注册中心注册时将服务名转成大写的了
+          lower-case-service-id: true
+      #配置路由路径   fixme 试一下 websocket ?
+      routes:
+        - id: goods-service
+          # 代表从注册中心获取服务，且以lb(load-balance)负载均衡方式转发
+          uri: lb://goods-service
+          # 匹配路径
+          predicates:
+            - Path=/api/goods/**
+          filters:
+            # 去除一个前缀路径
+            - StripPrefix=1
+            # 访问服务时增加一个前缀路径
+            # - PrefixPath=/goods
+            - name: RequestRateLimiter
+              args:
+                # 指定key处理器的beanName
+                key-resolver: "#{@ipKeyResolver}"
+                redis-rate-limiter: "#{@myRateLimiter}"
+                # 允许用户每秒执行多少请求。这是令牌桶填充的速率。
+#                redis-rate-limiter.replenishRate: 2
+                # 允许用户在一秒内执行的最大请求数。这是令牌桶可以容纳的令牌数量。将此值设置为零会阻止所有请求
+#                redis-rate-limiter.burstCapacity: 10
+                # 请求花费多少令牌
+#                redis-rate-limiter.requestedTokens: 1
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8001/eureka

@@ -21,7 +21,7 @@ import java.util.List;
  * @since 2021-12-28
  */
 @RestController
-@RequestMapping("/goods/goods-category")
+@RequestMapping("/goods-category")
 @Tag(name = "商品分类管理接口")
 public class GoodsCategoryController extends BaseController<IGoodsCategoryService> {
 
