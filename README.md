@@ -31,7 +31,7 @@
 |Elasticsearch |	商品搜索 |
 |MongoDB |	热点商品存储 |
 |ELK |	日志收集 |
-|Fluentd |	另一种日志手机实现 |
+|Fluentd |	另一种日志收集实现 |
 |Hystrix | 以及dashboard	断路器以及断路器监控 |
 |SpringCloudSleuth |	分布式请求链路跟踪 |
 |Consul	|服务治理与配置中心|
