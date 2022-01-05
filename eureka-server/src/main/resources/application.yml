@@ -20,6 +20,6 @@ eureka:
       # 是否开启健康检查
       enabled: true
     # 是否暴露注册信息
-    fetch-registry: true
+    fetch-registry: false
     # 是否作为服务注册
     register-with-eureka: false

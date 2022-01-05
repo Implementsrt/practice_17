@@ -13,6 +13,17 @@ spring:
       label: master
 
 eureka:
+  instance:
+    health-check-url-path: /actuator/health
   client:
     service-url:
       defaultZone: http://localhost:8001/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS

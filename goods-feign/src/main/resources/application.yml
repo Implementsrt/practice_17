@@ -8,6 +8,8 @@ spring:
     name: goods-feign
 
 eureka:
+  instance:
+    health-check-url-path: /actuator/health
   client:
     service-url:
       defaultZone: http://localhost:8001/eureka
@@ -28,3 +30,12 @@ feign:
 logging:
   level:
     cn.qhy: debug
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS

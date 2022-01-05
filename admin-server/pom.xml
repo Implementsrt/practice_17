@@ -5,35 +5,29 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>cn.qhy</groupId>
         <artifactId>dependency-management</artifactId>
+        <groupId>cn.qhy</groupId>
         <version>1.0.0</version>
         <relativePath>../dependency-management/pom.xml</relativePath>
     </parent>
-
-    <artifactId>gateway-server</artifactId>
-    <name>gateway-server</name>
     <packaging>jar</packaging>
+
+    <artifactId>admin-server</artifactId>
+    <name>admin-server</name>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-gateway</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
-
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-server</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
     </dependencies>
+
 </project>

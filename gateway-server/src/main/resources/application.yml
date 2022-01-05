@@ -57,6 +57,17 @@ spring:
 #                redis-rate-limiter.requestedTokens: 1
 
 eureka:
+  instance:
+    health-check-url-path: /actuator/health
   client:
     service-url:
       defaultZone: http://localhost:8001/eureka
+
+management:
+  endpoint:
+    health:
+      show-details: ALWAYS
+  endpoints:
+    web:
+      exposure:
+        include: "*"
