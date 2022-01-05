@@ -1,0 +1,30 @@
+server:
+  port: 9101
+  servlet:
+    context-path: /goods
+
+spring:
+  application:
+    name: goods-feign
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8001/eureka
+
+feign:
+  httpclient:
+    enabled: false
+  okhttp:
+    enabled: true
+  client:
+    config:
+      default:
+        connect-timeout: 5000
+        read-timeout: 5000
+        logger-level: basic
+        errorDecoder: cn.qhy.goodsfeign.config.FeignErrorDecoder
+
+logging:
+  level:
+    cn.qhy: debug

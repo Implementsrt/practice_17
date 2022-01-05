@@ -35,7 +35,7 @@ spring:
       routes:
         - id: goods-service
           # 代表从注册中心获取服务，且以lb(load-balance)负载均衡方式转发
-          uri: lb://goods-service
+          uri: lb://goods-feign
           # 匹配路径
           predicates:
             - Path=/api/goods/**
