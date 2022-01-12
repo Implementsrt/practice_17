@@ -24,7 +24,7 @@
 4. 配置文件
 ```
 server:
-  port: 9411
+  port: 9301
 
 spring:
   application:

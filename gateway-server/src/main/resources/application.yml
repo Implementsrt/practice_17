@@ -55,7 +55,14 @@ spring:
 #                redis-rate-limiter.burstCapacity: 10
                 # 请求花费多少令牌
 #                redis-rate-limiter.requestedTokens: 1
-
+  zipkin:
+    base-url: http://localhost:9411
+    #让nacos把它当成一个URL，而不要当做服务名
+    discovery-client-enabled: false
+  sleuth:
+    sampler:
+      # 设置Sleuth的抽样收集概率
+      probability: 0.1
 eureka:
   instance:
     health-check-url-path: /actuator/health

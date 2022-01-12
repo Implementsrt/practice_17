@@ -11,6 +11,14 @@ spring:
       profile: dev
       name: ${spring.application.name}
       label: master
+  zipkin:
+    base-url: http://localhost:9411
+    #让nacos把它当成一个URL，而不要当做服务名
+    discovery-client-enabled: false
+  sleuth:
+    sampler:
+      # 设置Sleuth的抽样收集概率
+      probability: 0.1
 
 eureka:
   instance:
@@ -27,3 +35,9 @@ management:
   endpoint:
     health:
       show-details: ALWAYS
+
+## 设置openFeign和sleuth的日志级别为debug，方便查看日志信息
+logging:
+  level:
+    org.springframework.cloud.openfeign: debug
+    org.springframework.cloud.sleuth: debug
