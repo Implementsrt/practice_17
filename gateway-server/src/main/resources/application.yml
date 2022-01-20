@@ -33,15 +33,22 @@ spring:
           lower-case-service-id: true
       #配置路由路径   fixme 试一下 websocket ?
       routes:
+        # 文档转发
+        - id: openapi
+          uri: http://localhost:${server.port}
+          predicates:
+            - Path=/v3/api-docs/**
+          filters:
+            - RewritePath=/v3/api-docs/(?<path>.*), /$\{path}/v3/api-docs
         - id: goods-service
           # 代表从注册中心获取服务，且以lb(load-balance)负载均衡方式转发
-          uri: lb://goods-feign
+          uri: lb://goods-service
           # 匹配路径
           predicates:
-            - Path=/api/goods/**
+            - Path=/goods/**
           filters:
             # 去除一个前缀路径
-            - StripPrefix=1
+            # - StripPrefix=1
             # 访问服务时增加一个前缀路径
             # - PrefixPath=/goods
             - name: RequestRateLimiter
@@ -49,12 +56,6 @@ spring:
                 # 指定key处理器的beanName
                 key-resolver: "#{@ipKeyResolver}"
                 redis-rate-limiter: "#{@myRateLimiter}"
-                # 允许用户每秒执行多少请求。这是令牌桶填充的速率。
-#                redis-rate-limiter.replenishRate: 2
-                # 允许用户在一秒内执行的最大请求数。这是令牌桶可以容纳的令牌数量。将此值设置为零会阻止所有请求
-#                redis-rate-limiter.burstCapacity: 10
-                # 请求花费多少令牌
-#                redis-rate-limiter.requestedTokens: 1
   zipkin:
     base-url: http://localhost:9411
     #让nacos把它当成一个URL，而不要当做服务名
@@ -78,3 +79,12 @@ management:
     web:
       exposure:
         include: "*"
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
+    org.springframework.http.server.reactive: debug
+    org.springframework.web.reactive: debug
+    org.springframework.boot.autoconfigure.web: debug
+    reactor.netty: debug
+    redisratelimiter: debug

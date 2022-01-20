@@ -8,6 +8,7 @@ import io.swagger.v3.oas.models.media.StringSchema;
 import io.swagger.v3.oas.models.parameters.Parameter;
 import org.springdoc.core.GroupedOpenApi;
 import org.springdoc.core.customizers.OperationCustomizer;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,15 +23,15 @@ import org.springframework.http.HttpHeaders;
         // openapi定义描述
         info = @Info(
                 title = "练习商城文档",
-                version = "1.0.0",
+                version = "v1.0.0",
                 description = "练习商城文档说明",
-                termsOfService = "http://localhost:9001/",
-                contact = @Contact(name = "qhy", url = "https://gitee.com/Implementsrt", email = "implementsrt@outlook.com")
+                termsOfService = "http://localhost/goods/",
+                contact = @Contact(name = "qhy", url = "https://gitee.com/Implementsrt", email = "Implementsrt@outlook.com")
         ),
         // 请求服务器地址配置，可以按不同的环境配置
         servers = {
                 @Server(
-                        url = "http://localhost:9001",
+                        url = "localhost/goods/",
                         description = "本地地址"
                 )
         }
@@ -39,11 +40,14 @@ import org.springframework.http.HttpHeaders;
 @ServletComponentScan("cn.qhy.common.*")
 public class SpringDocConfig {
 
+    @Value("${spring.application.name}")
+    private String applicationName;
+
     @Bean
     public GroupedOpenApi goodsApi() {
         return GroupedOpenApi.builder()
                 // 这个好像不能用中文
-                .group("spring-doc-goods")
+                .group(applicationName)
                 .packagesToScan("cn.qhy.goods.web")
                 .addOperationCustomizer(operationCustomizer())
                 .build();

@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
  * @author qhy
  * @since 2021-12-28
  */
+// @CrossOrigin
 @RestController
 @RequestMapping("/goods-spu")
 @Tag(name = "商品SPU管理接口")
