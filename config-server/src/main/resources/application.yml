@@ -8,7 +8,7 @@ spring:
     config:
       server:
         git:
-          uri: https://gitee.com/Implementsrt/practice_17_config.git
+          uri: https://github.com/Implementsrt/practice_17_config.git
           default-label: master
           skip-ssl-validation: true
           clone-on-start: true

@@ -26,7 +26,7 @@ import org.springframework.http.HttpHeaders;
                 version = "v1.0.0",
                 description = "练习商城文档说明",
                 termsOfService = "http://localhost/goods/",
-                contact = @Contact(name = "qhy", url = "https://gitee.com/Implementsrt", email = "Implementsrt@outlook.com")
+                contact = @Contact(name = "qhy", url = "https://github.com/Implementsrt", email = "Implementsrt@outlook.com")
         ),
         // 请求服务器地址配置，可以按不同的环境配置
         servers = {

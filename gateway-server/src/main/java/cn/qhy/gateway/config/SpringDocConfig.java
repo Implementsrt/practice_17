@@ -42,7 +42,7 @@ public class SpringDocConfig {
                 .version("v1.0.0")
                 .contact(new Contact()
                         .name("qhy")
-                        .url("https://gitee.com/Implementsrt")
+                        .url("https://github.com/Implementsrt")
                         .email("Implementsrt@outlook.com")));
     }
 }
